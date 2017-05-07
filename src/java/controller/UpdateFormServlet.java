@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
 import dbHelpers.ReadRecord;
@@ -16,10 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Customers;
 
-/**
- *
- * @author Dowan Kim
- */
 @WebServlet(name = "UpdateFormServlet", urlPatterns = {"/update"})
 public class UpdateFormServlet extends HttpServlet {
 
@@ -61,9 +53,7 @@ public class UpdateFormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-        //Pass execution on to doPost
-            doPost(request,response);
+        doPost(request, response);
     }
 
     /**
@@ -77,25 +67,25 @@ public class UpdateFormServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-            //get the custID
-            int custID = Integer.parseInt(request.getParameter("custID"));
 
-            //creat a ReadRecord class
-            ReadRecord rr = new ReadRecord(custID);
-            
-            //use ReadRecord to get the customer data
-            rr.doRead();
-            Customers customer = rr.getCustomer();
-            
-            //pass customer and controlto updateForm.jsp
-            request.setAttribute("customer", customer);
-            
-            String url = "/updateForm.jsp";
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward(request,response);
-            
+                //get the ID
+                int custID = Integer.parseInt(request.getParameter("custID"));
+
+                //create a ReadRecord class
+                ReadRecord rr = new ReadRecord(custID);
+
+                //use ReadRecord to get the customer data
+                rr.doRead();
+                Customers customer = rr.getCustomer();
+
+                //pass player and control to updateForm.jsp
+                request.setAttribute("customer", customer);
+
+                String url = "/updateForm.jsp";
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+                dispatcher.forward(request, response);
+        
     }
 
     /**

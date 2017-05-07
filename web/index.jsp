@@ -17,9 +17,8 @@
             <div class="main"> <!--main div-->
             
                 <h2>Customers Database</h2>
-                <a href ="read"> View All Customers </a>
-                <br><br>
-                <a href ="search.jsp"> Search Customers </a>
+               
+               
             
             </div> <!-- close main div-->
             

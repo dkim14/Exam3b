@@ -45,7 +45,7 @@
                     <input type="text" name="zip"  pattern="[0-9]{5}"  title="Five digit only" value="" size="20" required/>
                      <br>
                     <label> Email </label>
-                    <input type="text" name="emailAddr" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" title="ex)xxx@xxx.xxx" value="" size="20" required />
+                    <input type="text" name="emailAddr" title="ex)xxx@xxx.xxx" value="" size="20" required />
                     
                     
                     <input type="reset" name="reset" value="Clear" />

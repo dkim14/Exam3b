@@ -20,20 +20,14 @@
             <div class="main"> <!--main div-->
 
               
-                <h2>Welcome! this is ADMIN ONLY PAGE</h2>
-                
-                <hr>
-                
+                    
                     <%= table %>
                 
                
-                <br><br>
+          <br>
 
-                <a href ="add"> Add A New Customer </a>
-
-                <br><br>
-                <a href ="search.jsp"> Search Customers </a>
-
+          
+          
 
 
             </div> <!-- close main div-->

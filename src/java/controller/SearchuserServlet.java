@@ -1,19 +1,29 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
-import dbHelpers.UpdateQuery;
+import dbHelpers.SearchuserQuery;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Customers;
 
-@WebServlet(name = "UpdateServlet", urlPatterns = {"/updateCustomer"})
-public class UpdateServlet extends HttpServlet {
+/**
+ *
+ * @author Dowan Kim
+ */
+@WebServlet(name = "SearchuserServlet", urlPatterns = {"/userSearch"})
+public class SearchuserServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,10 +42,10 @@ public class UpdateServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateServlet</title>");            
+            out.println("<title>Servlet SearchuserServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SearchuserServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -53,7 +63,8 @@ public class UpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+        
+            doPost (request,response);
     }
 
     /**
@@ -67,39 +78,25 @@ public class UpdateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-                //get the form data and set up a Customer object
-                int custID = Integer.parseInt(request.getParameter("custID"));
-                String firstName = request.getParameter("firstName");
-                String lastName = request.getParameter("lastName");
-                String addr1 = request.getParameter("addr1");
-                String addr2 = request.getParameter("addr2");
-                String city = request.getParameter("city");
-                String state = request.getParameter("state");
-                String zip = request.getParameter("zip");
-                String emailAddr = request.getParameter("emailAddr");
-
-                Customers customer = new Customers();
-                customer.setCustID(custID);
-                customer.setFirstName(firstName);
-                customer.setLastName(lastName);
-                customer.setAddr1(addr1);
-                customer.setAddr2(addr2);
-                customer.setCity(city);
-                customer.setState(state);
-                customer.setZip(zip);
-                customer.setEmailAddr(emailAddr);
-
-
-                //create an UpdateQuery object and use it to update the friend
-                UpdateQuery uq = new UpdateQuery();
-                uq.doUpdate(customer);
-
-                //pass control to the ReadServlet
-                String url = "/read";
-
-                RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-                dispatcher.forward(request, response);
+            
+        try {
+            //get the text to search
+            String firstName = request.getParameter("searchVal");
+            String lastName = request.getParameter("searchVal");
+            //Creat a SearchQuery helper object
+            SearchuserQuery sq = new SearchuserQuery();
+            //get the html table
+            sq.doSearch(firstName, lastName);
+            String table = sq.getHTMLTable();
+            //Pass execution control to read.jsp along with the table
+            request.setAttribute("table",table);
+            String url = "/Readuser.jsp";
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+            dispatcher.forward(request,response);
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchuserServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

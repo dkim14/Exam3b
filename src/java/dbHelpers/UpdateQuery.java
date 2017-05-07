@@ -12,11 +12,10 @@ import java.util.logging.Logger;
 import model.Customers;
 
 public class UpdateQuery {
-    
     private Connection conn;
     
     public UpdateQuery(){
-         Properties props = new Properties();//MWC
+     Properties props = new Properties();
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
             props.load(instr);
@@ -28,7 +27,6 @@ public class UpdateQuery {
         } catch (IOException ex) {
             Logger.getLogger(UpdateQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         
         String driver = props.getProperty("driver.name");
         String url = props.getProperty("server.name");
@@ -45,15 +43,15 @@ public class UpdateQuery {
             Logger.getLogger(UpdateQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    
     }
     
-    public void doUpdate (Customers customer) {
-    
+    public void doUpdate (Customers customer){
+        
         try {
-            String query = "UPDATE Customers SET firstName = ?, lastName = ?, addrOne = ?, addrTwo = ?, city = ?, state = ?, zip = ?, emailAddr=? WHERE custID = ?";
+            String query = "UPDATE Customers SET firstName = ?, lastName = ?, addr1 = ?, addr2 = ?, city = ?, state = ?, zip = ?, emailAddr=? WHERE custID = ?";
             
             PreparedStatement ps = conn.prepareStatement(query);
+            
             ps.setString(1, customer.getFirstName());
             ps.setString(2, customer.getLastName());
             ps.setString(3, customer.getAddr1());
@@ -69,5 +67,4 @@ public class UpdateQuery {
             Logger.getLogger(UpdateQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }

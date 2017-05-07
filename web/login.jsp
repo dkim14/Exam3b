@@ -21,7 +21,7 @@
         <h1>!AUTHORIZED PERSON ONLY!</h1>
         <ul>
             <li> <a href = "index.jsp"> Customer </a></li>
-            <li> <a href = "read.jsp "> Authorized User</a></li>
+            <li> <a href = "read"> Authorized User</a></li>
         </ul>
         
          <%@ include file = "includes/footer.jsp" %>
