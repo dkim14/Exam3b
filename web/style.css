@@ -1,0 +1,157 @@
+h1{
+    color: white;
+    font-size: 40px;
+    
+    text-align: center;
+}
+
+body{
+    background-color: #D2B48C;
+    
+}
+
+table{
+    margin:0 auto;
+    padding-left:5px;
+    padding-right: 5px;
+    width:70%;
+    background-color:white
+}
+
+tbody{
+    background-color: #F08080; 
+}
+
+th{
+    border-bottom: 1px solid white;
+    background-color: #FFFF99;
+    color: #696969;  
+    height: 30px;
+    width:88px;
+}
+
+td{
+    color: white;
+    width: 88px;
+    text-align: center;
+    border:1px solid white; 
+
+}
+th, td{
+    border-bottom: 1px solid #ddd;
+    vertical-align: bottom;
+}
+
+
+label {
+    color:#696969;
+    display: block; 
+   }
+
+input[readonly]{
+    background-color: grey
+}
+
+input[type=text]{
+   
+    padding-left: 5px;
+    height: 20px;
+  
+} 
+tr:hover {
+    background-color: #CCCCCC;
+   
+}
+
+tr:nth-child(even) {
+    background-color: #696969;
+    
+}
+
+tr:nth-child(even):hover {
+    background-color: #CCCCCC;
+   
+}
+h2{
+    text-align:center;
+    color:white;
+    background-color: #F08080;
+}
+
+
+/* wrapper div that holds all of the content divs for the page */
+.wrap{
+    text-align:center;
+    width:90%;
+    margin: 0 auto;
+    border:8px solid black;
+    margin-top:25px;
+}
+/* formats the page header */
+.header{
+    text-align:left;
+    padding:25px;
+}
+.headerImg{
+    float:left;
+    width:200px;
+}
+.headerText{
+    float:left;
+    height:105px;
+    padding-top:50px;
+    padding-left:25px;
+}
+
+
+/*Fat Erik's Pipelist*/
+/*http://css.maxdesign.com.au/listamatic/horizontal32.htm*/
+.navlist
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navlist li
+{
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+.navlist li:before { content: "| "; }
+.navlist li:first-child:before { content: ""; }
+
+/*IE workaround*/
+/*All IE browsers*/
+* html .navlist li
+{
+    border-left: 1px solid black;
+    padding: 0 0.4em 0 0.4em;
+    margin: 0 0.4em 0 -0.4em;
+}
+
+/*Win IE browsers - hide from Mac IE\*/
+* html .navlist { height: 1%; }
+
+* html .navlist li
+{
+    display: block;
+    float: left;
+}
+
+/*End hide*/
+/*Mac IE 5*/
+* html .navlist li:first-child { border-left: 0; }
+
+/* formats main page content */
+.main{
+    text-align:center;
+    padding:25px;
+}
+/* formats the page footer */
+.footer{
+    text-align:center;
+    padding:25px;
+}
