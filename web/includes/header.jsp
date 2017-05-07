@@ -8,6 +8,15 @@
 		</div> <!-- close header text div-->
                    
                 
+                            <form name="searchForm" action="search" method="get">
+           
+            <input type="text" name="searchVal" value=""/>
+            
+                <br>
+             <input type="reset" name="reset" value="Clear" />
+             <input type="submit" name="submit" value="Search"/>
+             
+         </form>
       
 		<br clear="all">
 	

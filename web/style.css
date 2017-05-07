@@ -6,7 +6,7 @@ h1{
 }
 
 body{
-    background-color: #D2B48C;
+    background-color: lightblue;
     
 }
 
@@ -19,12 +19,12 @@ table{
 }
 
 tbody{
-    background-color: #F08080; 
+    background-color: gray; 
 }
 
 th{
     border-bottom: 1px solid white;
-    background-color: #FFFF99;
+    background-color: cornflowerblue;
     color: #696969;  
     height: 30px;
     width:88px;
@@ -44,7 +44,7 @@ th, td{
 
 
 label {
-    color:#696969;
+    color: black;
     display: block; 
    }
 
@@ -75,7 +75,7 @@ tr:nth-child(even):hover {
 h2{
     text-align:center;
     color:white;
-    background-color: #F08080;
+    background-color: cornflowerblue;
 }
 
 
