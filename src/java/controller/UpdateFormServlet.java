@@ -78,11 +78,11 @@ public class UpdateFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-            //get the customerID
-            int customerID = Integer.parseInt(request.getParameter("customerID"));
+            //get the custID
+            int custID = Integer.parseInt(request.getParameter("custID"));
 
             //creat a ReadRecord class
-            ReadRecord rr = new ReadRecord(customerID);
+            ReadRecord rr = new ReadRecord(custID);
             
             //use ReadRecord to get the customer data
             rr.doRead();

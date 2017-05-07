@@ -26,7 +26,7 @@
                     <label> First Name: </label>
                     <input type="text" name="firstName" value="" size="20" />
                     <br>
-                    <label> Last Type: </label>
+                    <label> Last Name: </label>
                     <input type="text" name="lastName" value="" size="20" />
                     <br>
                     <label> Address 1 </label>

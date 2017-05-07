@@ -19,9 +19,9 @@ public class ReadRecord {
     private Connection conn;
     private ResultSet results;
     private Customers customer = new Customers();
-    private int customerID;
+    private int custID;
     
-    public ReadRecord (int customerID){
+    public ReadRecord (int custID){
 
     
         Properties props = new Properties();//MWC
@@ -43,7 +43,7 @@ public class ReadRecord {
         String username = props.getProperty("user.name");
         String passwd = props.getProperty("user.password");
         
-        this.customerID = customerID;
+        this.custID = custID;
         
         try {
             Class.forName(driver);
@@ -64,11 +64,11 @@ public class ReadRecord {
     public void doRead(){
     
         try {
-            String query = "SELECT * FROM customers WHERE customerID = ?";
+            String query = "SELECT * FROM customers WHERE custID = ?";
             
             PreparedStatement ps = conn.prepareStatement(query);
             
-            ps.setInt(1, customerID);
+            ps.setInt(1, custID);
             
             this.results = ps.executeQuery();
             

@@ -58,15 +58,15 @@ public class DeleteQuery {
     }
     
     
-    public void doDelete(int customerID){
+    public void doDelete(int custID){
         
         try {
             //set up a string to hold our query
-            String query = "DELETE FROM customers WHERE customerID = ?";
+            String query = "DELETE FROM customers WHERE custID = ?";
             //creat a preparedstatement using our query string
             PreparedStatement ps = conn.prepareStatement (query);
             //fill in the preeparedstatement
-            ps.setInt(1, customerID);
+            ps.setInt(1, custID);
             //execute the query
             ps.executeUpdate();
         } catch (SQLException ex) {

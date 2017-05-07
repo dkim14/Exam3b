@@ -42,7 +42,7 @@ public class Customers {
         return custID;
     }
 
-    public void setCustID(int customerID) {
+    public void setCustID(int custID) {
         this.custID = custID;
     }
 

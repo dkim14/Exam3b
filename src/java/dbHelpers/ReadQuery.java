@@ -16,10 +16,9 @@ public class ReadQuery {
 
     private Connection conn;
     private ResultSet results;
-    
-    public ReadQuery(){
-        
-        
+
+    public ReadQuery() {
+
         Properties props = new Properties();//MWC
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
@@ -32,8 +31,7 @@ public class ReadQuery {
         } catch (IOException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         String driver = props.getProperty("driver.name");
         String url = props.getProperty("server.name");
         String username = props.getProperty("user.name");
@@ -48,36 +46,31 @@ public class ReadQuery {
         } catch (SQLException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-    
+
     }
 
-    public void doRead(){
-        
+    public void doRead() {
+
         try {
-            String query = "SELECT * FROM customers ORDER BY customerID ASC";
-            
+            String query = "SELECT * FROM customers ORDER BY custID ASC";
+
             PreparedStatement ps = conn.prepareStatement(query);
             this.results = ps.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-       
+
     }
-    
-    public String getHTMLTable(){
-    
-    
-        String table="";
-     
+
+    public String getHTMLTable() {
+
+        String table = "";
+
         table += "<table>";
-           try {
-            while(this.results.next()){
-                
-                    Customers customer = new Customers();
+        try {
+            while (this.results.next()) {
+
+                Customers customer = new Customers();
                 customer.setCustID(this.results.getInt("custID"));
                 customer.setFirstName(this.results.getString("firstName"));
                 customer.setLastName(this.results.getString("lastName"));
@@ -87,72 +80,60 @@ public class ReadQuery {
                 customer.setState(this.results.getString("state"));
                 customer.setZip(this.results.getString("zip"));
                 customer.setEmailAddr(this.results.getString("emailAddr"));
-                                      
-                table += "<tr>";
-                        
-                    table += "<td>";
-                        table += customer.getCustID();
-                    table += "</td>";
-                
-                
-                    table += "<td>";
-                        table += customer.getFirstName();
-                    table += "</td>";
-                
-                
-                    table += "<td>";
-                       table += customer.getLastName();
-                    table += "</td>";
-                
-                
-                    table += "<td>";
-                         table += customer.getAddr1();
-                    table += "</td>";
-                
-                    
-                    
-                    table += "<td>";
-                         table += customer.getAddr2();
-                    table += "</td>";
-                    
-                    table += "<td>";
-                         table += customer.getCity();
-                    table += "</td>";
-                    
-                    table += "<td>";
-                         table += customer.getState();
-                    table += "</td>";
-                    
-                    
-                    table += "<td>";
-                         table += customer.getZip();
 
-                    table += "</td>";
-                    
-                    
-                    table += "<td>";
-                         table += customer.getEmailAddr();
-                    table += "</td>";
-                    
-                    
-                    table+= "<td>";
-                    table += "<a href=update?custID=" + customer.getCustID()+ "> Update </a>" + "<a href=delete?custID=" + customer.getCustID() + "> Delete </a>";
-                    table+= "</td>";
-                                               
-               table += "</tr>";
-                
+                table += "<tr>";
+
+                table += "<td>";
+                table += customer.getCustID();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getFirstName();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getLastName();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getAddr1();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getAddr2();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getCity();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getState();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getZip();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getEmailAddr();
+                table += "</td>";
+
+                table += "<td>";
+                table += "<a href=update?custID=" + customer.getCustID() + "> Update </a>" + "<a href=delete?custID=" + customer.getCustID() + "> Delete </a>";
+                table += "</td>";
+
+                table += "</tr>";
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-   
-        table +="</table>";
-    
-              return table;
-    
-    
+
+        table += "</table>";
+
+        return table;
+
     }
-    
-    
-    
+
 }
