@@ -77,36 +77,66 @@ public class ReadQuery {
            try {
             while(this.results.next()){
                 
-                Customers customer = new Customers();
-                customer.setCustomerID(this.results.getInt("customerID"));
-                customer.setCustomerName(this.results.getString("customernName"));
-                customer.setCustomerType(this.results.getString("customerType"));
-                customer.setCustomerNumber(this.results.getInt("customerNumber"));
+                    Customers customer = new Customers();
+                customer.setCustID(this.results.getInt("custID"));
+                customer.setFirstName(this.results.getString("firstName"));
+                customer.setLastName(this.results.getString("lastName"));
+                customer.setAddr1(this.results.getString("addr1"));
+                customer.setAddr2(this.results.getString("addr2"));
+                customer.setCity(this.results.getString("city"));
+                customer.setState(this.results.getString("state"));
+                customer.setZip(this.results.getString("zip"));
+                customer.setEmailAddr(this.results.getString("emailAddr"));
                                       
                 table += "<tr>";
                         
                     table += "<td>";
-                        table += customer.getCustomerID();
+                        table += customer.getCustID();
                     table += "</td>";
                 
                 
                     table += "<td>";
-                        table += customer.getCustomerName();
+                        table += customer.getFirstName();
                     table += "</td>";
                 
                 
                     table += "<td>";
-                       table += customer.getCustomerType();
+                       table += customer.getLastName();
                     table += "</td>";
                 
                 
                     table += "<td>";
-                         table += customer.getCustomerNumber();
+                         table += customer.getAddr1();
                     table += "</td>";
                 
                     
+                    
+                    table += "<td>";
+                         table += customer.getAddr2();
+                    table += "</td>";
+                    
+                    table += "<td>";
+                         table += customer.getCity();
+                    table += "</td>";
+                    
+                    table += "<td>";
+                         table += customer.getState();
+                    table += "</td>";
+                    
+                    
+                    table += "<td>";
+                         table += customer.getZip();
+
+                    table += "</td>";
+                    
+                    
+                    table += "<td>";
+                         table += customer.getEmailAddr();
+                    table += "</td>";
+                    
+                    
                     table+= "<td>";
-                    table+= "<a href=update?customerID=" + customer.getCustomerID()+"> Update   </a>" + "<a href=delete?customerID=" + customer.getCustomerID() + "> Delete </a>";
+                    table += "<a href=update?custID=" + customer.getCustID()+ "> Update </a>" + "<a href=delete?custID=" + customer.getCustID() + "> Delete </a>";
                     table+= "</td>";
                                                
                table += "</tr>";

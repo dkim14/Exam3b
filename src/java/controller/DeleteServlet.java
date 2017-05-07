@@ -77,8 +77,8 @@ public class DeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            //get the customerID
-            int customerID = Integer.parseInt(request.getParameter("customerID"));
+            //get the custID
+            int custID = Integer.parseInt(request.getParameter("custID"));
             
 
             //create a deleteQuery object
@@ -86,7 +86,7 @@ public class DeleteServlet extends HttpServlet {
             
             
             //Use deleteQuery to delet the object
-            dq.doDelete(customerID);
+            dq.doDelete(custID);
             
 
             //pass execution on th the ReadServlet

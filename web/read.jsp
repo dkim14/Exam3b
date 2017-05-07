@@ -19,24 +19,10 @@
 
             <div class="main"> <!--main div-->
 
-                <h2>Favorite Customers</h2>
-                
-                
-                
-                <table>
-
-                    <tr>
-                        <th>Customer ID</th>
-                        <th>Customer Name</th>
-                        <th>Customer Type</th>
-                        <th>Customer Number</th>
-                        <th> </th>
-                    </tr>
-
+              
                     
                     <%= table %>
                 
-                </table>
                
                 <br><br>
 

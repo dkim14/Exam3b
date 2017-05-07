@@ -49,13 +49,14 @@ public class SearchQuery {
 
     }
 
-    public void doSearch(String customersName) {
+    public void doSearch(String firstName, String lastName) {
 
         try {
-            String query = "SELECT * FROM customerss WHERE UPPER(customersName) LIKE ? ORDER BY customersID ASC ";
+            String query = "SELECT * FROM Customers WHERE UPPER(firstName) LIKE ? OR UPPER (LastName) LIKE ? ORDER BY custID ASC";
 
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, "%" + customersName.toUpperCase() + "%");
+            ps.setString(1, "%" + firstName.toUpperCase() + "%");
+            ps.setString(2, "%" + lastName.toUpperCase() + "%" );
             this.results = ps.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,46 +72,71 @@ public class SearchQuery {
         try {
             while (this.results.next()) {
 
-                Customers customers = new Customers();
-                customers.setCustomerID(this.results.getInt("customersID"));
-                customers.setCustomerName(this.results.getString("customersName"));
-                customers.setCustomerType(this.results.getString("customersType"));
-                customers.setCustomerNumber(this.results.getInt("customersNumber"));
+                Customers customer = new Customers();
+                customer.setCustID(this.results.getInt("custID"));
+                customer.setFirstName(this.results.getString("firstName"));
+                customer.setLastName(this.results.getString("lastName"));
+                customer.setAddr1(this.results.getString("addr1"));
+                customer.setAddr2(this.results.getString("addr2"));
+                customer.setCity(this.results.getString("city"));
+                customer.setState(this.results.getString("state"));
+                customer.setZip(this.results.getString("zip"));
+                customer.setEmailAddr(this.results.getString("emailAddr"));
 
                 table += "<tr>";
-
                 table += "<td>";
-                table += customers.getCustomersID();
+                table += customer.getCustID();
                 table += "</td>";
 
                 table += "<td>";
-                table += customers.getCustomersName();
+                table += customer.getFirstName();
                 table += "</td>";
 
                 table += "<td>";
-                table += customers.getCustomersType();
+                table += customer.getLastName();
                 table += "</td>";
 
                 table += "<td>";
-                table += customers.getCustomesNumber();
+                table += customer.getAddr1();
                 table += "</td>";
 
                 table += "<td>";
-                table += "<a href=update?customerID=" + customer.getCustomersID() + "> Update   </a>" + "<a href=delete?customerID=" + customer.getCustomersID() + "> Delete </a>";
+                table += customer.getAddr2();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getCity();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getState();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getZip();
+                table += "</td>";
+
+                table += "<td>";
+                table += customer.getEmailAddr();
+                table += "</td>";
+
+                table += "<td>";
+                table += "<a href=update?custID=" + customer.getCustID() + "> Update </a>" + "<a href=delete?custID=" + customer.getCustID() + "> Delete </a>";
                 table += "</td>";
 
                 table += "</tr>";
 
             }
-  
+
         } catch (SQLException ex) {
             Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
         table += "</table>";
 
         return table;
 
     }
-
 }
+
+

@@ -51,14 +51,18 @@ public class UpdateQuery {
     public void doUpdate (Customers customer) {
     
         try {
-            String query = "UPDATE customers SET customerName =?, customerType=?, customerNumber=? WHERE customerID=?";
+            String query = "UPDATE Customers SET firstName = ?, lastName = ?, addrOne = ?, addrTwo = ?, city = ?, state = ?, zip = ?, emailAddr=? WHERE custID = ?";
             
             PreparedStatement ps = conn.prepareStatement(query);
-            
-            ps.setString(1, customer.getCustomerName());
-            ps.setString(2, customer.getCustomerType());
-            ps.setInt(3, customer.getCustomerNumber());
-            ps.setInt(4,customer.getCustomerID());
+            ps.setString(1, customer.getFirstName());
+            ps.setString(2, customer.getLastName());
+            ps.setString(3, customer.getAddr1());
+            ps.setString(4, customer.getAddr2());
+            ps.setString(5, customer.getCity());
+            ps.setString(6, customer.getState());
+            ps.setString(7, customer.getZip());
+            ps.setString(8, customer.getEmailAddr());
+            ps.setInt(9, customer.getCustID());
             
             ps.executeUpdate();
         } catch (SQLException ex) {

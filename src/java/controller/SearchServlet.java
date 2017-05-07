@@ -81,11 +81,12 @@ public class SearchServlet extends HttpServlet {
             
         try {
             //get the text to search
-            String customerName = request.getParameter("searchVal");
+            String firstName = request.getParameter("searchVal");
+            String lastName = request.getParameter("searchVal");
             //Creat a SearchQuery helper object
             SearchQuery sq = new SearchQuery();
             //get the html table
-            sq.doSearch(customerName);
+            sq.doSearch(firstName, lastName);
             String table = sq.getHTMLTable();
             //Pass execution control to read.jsp along with the table
             request.setAttribute("table",table);

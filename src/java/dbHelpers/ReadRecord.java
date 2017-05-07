@@ -74,10 +74,16 @@ public class ReadRecord {
             
             this.results.next();
             
-            customer.setCustomerID(this.results.getInt("customerID"));
-            customer.setCustomerName(this.results.getString("customerName"));
-            customer.setCustomerType(this.results.getString("customerType"));
-            customer.setCustomerNumber(this.results.getInt("customerNumber"));
+                customer.setCustID(this.results.getInt("custID"));
+                customer.setFirstName(this.results.getString("firstName"));
+                customer.setLastName(this.results.getString("lastName"));
+                customer.setAddr1(this.results.getString("addr1"));
+                customer.setAddr2(this.results.getString("addr2"));
+                customer.setCity(this.results.getString("city"));
+                customer.setState(this.results.getString("state"));
+                customer.setZip(this.results.getString("zip"));
+                customer.setEmailAddr(this.results.getString("emailAddr"));
+                
         } catch (SQLException ex) {
             Logger.getLogger(ReadRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
