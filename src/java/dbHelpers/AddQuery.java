@@ -21,10 +21,10 @@ import model.Customers;
  * @author Dowan Kim
  */
 public class AddQuery {
-    
+
     private Connection conn;
-    
-    public AddQuery(){
+
+    public AddQuery() {
         Properties props = new Properties();//MWC
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
@@ -37,8 +37,7 @@ public class AddQuery {
         } catch (IOException ex) {
             Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         String driver = props.getProperty("driver.name");
         String url = props.getProperty("server.name");
         String username = props.getProperty("user.name");
@@ -53,17 +52,15 @@ public class AddQuery {
         } catch (SQLException ex) {
             Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+
     }
-    
-    public void doAdd (Customers customer) {
-    
-         try {
-            String query = "INSERT INTO customers (firstName, lastName, addr1, addr2, city, state, zip, emailAddr) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    public void doAdd(Customers customer) {
+
+        try {
+            String query = "INSERT INTO customer (firstName, lastName, addr1, addr2, city, state, zip, emailAddr) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(query);
-            
+
             ps.setString(1, customer.getFirstName());
             ps.setString(2, customer.getLastName());
             ps.setString(3, customer.getAddr1());
@@ -72,14 +69,11 @@ public class AddQuery {
             ps.setString(6, customer.getState());
             ps.setString(7, customer.getZip());
             ps.setString(8, customer.getEmailAddr());
-            
+
             ps.executeUpdate();
-            
         } catch (SQLException ex) {
             Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
+
 }
