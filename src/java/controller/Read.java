@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
 import dbHelpers.ReadQuery;
@@ -15,10 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Dowan Kim
- */
 @WebServlet(name = "Read", urlPatterns = {"/read"})
 public class Read extends HttpServlet {
 
@@ -60,10 +52,7 @@ public class Read extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        
-        //pass execution on to doPost
-             doPost(request, response);
+        doPost(request, response);
     }
 
     /**
@@ -77,25 +66,22 @@ public class Read extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
+                //Create a ReadQuery helper object
                 ReadQuery rq = new ReadQuery();
-                
+
+                //Get the HTML table from the ReadQuery object
                 rq.doRead();
-                String table = rq.getHTMLTable ();
-                
+                String table = rq.getHTMLTable();
+
+                //Pass execution control to read.jsp along with the table
                 request.setAttribute("table", table);
-                String url= "/read.jsp";
-                
+                String url = "/read.jsp";
+
                 RequestDispatcher dispatcher = request.getRequestDispatcher(url);
                 dispatcher.forward(request, response);
-                
-        
-        
-        
-        
-        
-        processRequest(request, response);
+
+   
     }
 
     /**

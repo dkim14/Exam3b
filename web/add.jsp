@@ -44,18 +44,18 @@
                 </tr>
 
                 <tr>
-                    <td >City</td>
+                    <td >City:</td>
                     <td><input type="text" name="city" value="" required/></td>
                 </tr>
 
                 <tr>
                     <td >State:</td>
-                    <td><input type="text" pattern="[A-Za-z]{2}" title="Two letter only" name="state" value="" required/></td>
+                    <td><input type="text" name="state" pattern="[A-Za-z]{2}" title="Two letter only"  value="" required/></td>
                 </tr>
 
                 <tr>
                     <td >Zip Code:</td>
-                    <td><input type="text" pattern="[0-9]{5}"  title="Five digit only" name="zip" value="" required/></td>
+                    <td><input type="text" name="zip"  pattern="[0-9]{5}"  title="Five digit only" value="" required/></td>
                 </tr>
 
                 <tr>

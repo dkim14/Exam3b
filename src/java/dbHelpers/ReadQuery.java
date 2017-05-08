@@ -52,7 +52,7 @@ public class ReadQuery {
     public void doRead() {
 
         try {
-            String query = "SELECT * FROM customers ORDER BY custID ASC";
+            String query = "SELECT * FROM CUSTOMERS ORDER BY custID ASC";
 
             PreparedStatement ps = conn.prepareStatement(query);
             this.results = ps.executeQuery();
@@ -81,11 +81,11 @@ public class ReadQuery {
         table += "</th>";
 
         table += "<th>";
-        table += "Address 1";
+        table += "Addr1";
         table += "</th>";
 
         table += "<th>";
-        table += "Address 2";
+        table += "Addr2";
         table += "</th>";
 
         table += "<th>";

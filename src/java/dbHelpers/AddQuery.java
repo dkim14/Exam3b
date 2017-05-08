@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dbHelpers;
 
 import java.io.IOException;
@@ -16,15 +12,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Customers;
 
-/**
- *
- * @author Dowan Kim
- */
 public class AddQuery {
-
+    
     private Connection conn;
-
-    public AddQuery() {
+    
+    public AddQuery(){
         Properties props = new Properties();//MWC
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
@@ -37,7 +29,8 @@ public class AddQuery {
         } catch (IOException ex) {
             Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        
         String driver = props.getProperty("driver.name");
         String url = props.getProperty("server.name");
         String username = props.getProperty("user.name");
@@ -52,15 +45,17 @@ public class AddQuery {
         } catch (SQLException ex) {
             Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        
+        
     }
-
+    
+    
     public void doAdd(Customers customer) {
-
         try {
-            String query = "INSERT INTO Customer (firstName, lastName, addrOne, addrTwo, city, state, zip, emailAddr) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO customers (firstName, lastName, addr1, addr2, city, state, zip, emailAddr) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(query);
-
+            
             ps.setString(1, customer.getFirstName());
             ps.setString(2, customer.getLastName());
             ps.setString(3, customer.getAddr1());
@@ -69,11 +64,14 @@ public class AddQuery {
             ps.setString(6, customer.getState());
             ps.setString(7, customer.getZip());
             ps.setString(8, customer.getEmailAddr());
-
+            
             ps.executeUpdate();
+           
         } catch (SQLException ex) {
             Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    
+    
 }

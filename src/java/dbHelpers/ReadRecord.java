@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Customers;
 
-
 public class ReadRecord {
     
     private Connection conn;
@@ -21,10 +20,9 @@ public class ReadRecord {
     private Customers customer = new Customers();
     private int custID;
     
-    public ReadRecord (int custID){
-
-    
-        Properties props = new Properties();//MWC
+    public ReadRecord (int custID) {
+       
+        Properties props = new Properties();
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
             props.load(instr);
@@ -36,7 +34,6 @@ public class ReadRecord {
         } catch (IOException ex) {
             Logger.getLogger(ReadRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         
         String driver = props.getProperty("driver.name");
         String url = props.getProperty("server.name");
@@ -55,21 +52,19 @@ public class ReadRecord {
         } catch (SQLException ex) {
             Logger.getLogger(ReadRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-    
     }
-
-    public void doRead(){
+    
+    public void doRead() {
     
         try {
+            //set up a string to hold query
             String query = "SELECT * FROM Customers WHERE custID = ?";
             
+            //create a preparedstatement using our query string
             PreparedStatement ps = conn.prepareStatement(query);
-            
+            //fill in the prepared statement
             ps.setInt(1, custID);
-            
+            //execute the query
             this.results = ps.executeQuery();
             
             this.results.next();
@@ -83,16 +78,16 @@ public class ReadRecord {
                 customer.setState(this.results.getString("state"));
                 customer.setZip(this.results.getString("zip"));
                 customer.setEmailAddr(this.results.getString("emailAddr"));
-                
         } catch (SQLException ex) {
             Logger.getLogger(ReadRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
     
-    
     }
+
     
-    public Customers getCustomer(){
+public Customers getCustomer() {
+        
         return this.customer;
     }
+    
 }
-

@@ -19,7 +19,8 @@
             
                 <h2>Customers Database</h2>
                
-               
+               this page is for customer only.
+               If you are a authorized user, Please click the Log-in.
             
             </div> <!-- close main div-->
             

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
 import java.io.IOException;
@@ -14,10 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Dowan Kim
- */
 @WebServlet(name = "AddForm", urlPatterns = {"/add"})
 public class AddForm extends HttpServlet {
 
@@ -59,10 +51,7 @@ public class AddForm extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            //Pass excution on to doPost
-            doPost(request,response);
-            
+        doPost(request, response);
     }
 
     /**
@@ -75,13 +64,12 @@ public class AddForm extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException 
+    {
+                String url = "/add.jsp";
         
-            String url = "/add.jsp";
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward (request, response);
-                
+                RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+                dispatcher.forward (request, response);    
     }
 
     /**

@@ -15,7 +15,7 @@ public class Customers {
     private String emailAddr;
 
     public Customers() {
-     this.custID = 0;
+        this.custID = 0;
         this.firstName = "";
         this.lastName = "";
         this.addr1 = "";
