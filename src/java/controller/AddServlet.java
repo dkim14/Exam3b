@@ -91,6 +91,7 @@ public class AddServlet extends HttpServlet {
 
         //set up a Customers object
         Customers customer = new Customers();
+        
         customer.setFirstName(firstName);
         customer.setLastName(lastName);
         customer.setAddr1(addr1);

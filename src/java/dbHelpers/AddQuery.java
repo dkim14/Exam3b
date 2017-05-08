@@ -58,7 +58,7 @@ public class AddQuery {
     public void doAdd(Customers customer) {
 
         try {
-            String query = "INSERT INTO customer (firstName, lastName, addr1, addr2, city, state, zip, emailAddr) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO Customer (firstName, lastName, addrOne, addrTwo, city, state, zip, emailAddr) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(query);
 
             ps.setString(1, customer.getFirstName());

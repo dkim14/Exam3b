@@ -21,32 +21,48 @@
 
                 <h2>Add A New Customer</h2>
 
-                   <form name="addForm" action="addCustomer" method="get">
+                   <form name="addForm" action="addCustomer" method="post">
+          <table>
+                <tr>
+                    <td >First Name:</td>
+                    <td><input type="text" name="firstName" value="" required/></td>
+                </tr>
 
-                    <label> First Name: </label>
-                    <input type="text" name="firstName" value="" required />
-                    <br>
-                    <label> Last Name: </label>
-                    <input type="text" name="lastName" value=""  required />
-                    <br>
-                    <label> Address 1 </label>
-                    <input type="text" name="addr1" value=""  required />
-                     <br>
-                    <label> Address 2 </label>
-                    <input type="text" name="addr2" value="" />
-                     <br>
-                    <label> City </label>
-                    <input type="text" name="city" value=""  required/>
-                     <br>
-                    <label> State </label>
-                    <input type="text" name="state" pattern="[A-Za-z]{2}" title="Two letter only" value="" required />
-                     <br>
-                    <label> Zip code [five digit only] </label>
-                    <input type="text" name="zip"  pattern="[0-9]{5}" title="Five digit only" value=""  required/>
-                     <br>
-                    <label> Email </label>
-                    <input type="text" name="emailAddr" title="ex)xxx@xxx.xxx" value=""  required />
-                    
+                <tr>
+                    <td >Last Name:</td>
+                    <td><input type="text" name="lastName" value="" required/></td>
+                </tr>
+
+                <tr>
+                    <td >Address 1:</td>
+                    <td><input type="text" name="addr1" value="" required/></td>
+                </tr>
+
+                <tr>
+                    <td >Address 2:</td>
+                    <td><input type="text" name="addr2" value=""/></td>
+                </tr>
+
+                <tr>
+                    <td >City</td>
+                    <td><input type="text" name="city" value="" required/></td>
+                </tr>
+
+                <tr>
+                    <td >State:</td>
+                    <td><input type="text" pattern="[A-Za-z]{2}" title="Two letter only" name="state" value="" required/></td>
+                </tr>
+
+                <tr>
+                    <td >Zip Code:</td>
+                    <td><input type="text" pattern="[0-9]{5}"  title="Five digit only" name="zip" value="" required/></td>
+                </tr>
+
+                <tr>
+                    <td >Email Address:</td>
+                    <td><input type="text" name="emailAddr" title="ex)xxx@xxx.xxx"  value="" required/></td>
+                </tr>
+            </table>
                     
                     <input type="reset" name="reset" value="Clear" />
                     <input type="submit" name="submit" value="Submit" />
